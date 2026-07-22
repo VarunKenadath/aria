@@ -1,0 +1,12 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements_dash.txt .
+RUN pip install --no-cache-dir -r requirements_dash.txt
+
+COPY caregiver_dash.py .
+
+EXPOSE 8080
+
+CMD ["streamlit", "run", "caregiver_dash.py", "--server.port=8080", "--server.address=0.0.0.0"]
